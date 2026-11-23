@@ -1,12 +1,23 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../../composables/useAuth'
+import { useCart } from '../../composables/useCart'
 
 const router = useRouter()
 const { auth, loadUser, logout } = useAuth()
+const { cart, loadCart, resetCart } = useCart()
 const loggingOut = ref(false)
 const logoutError = ref('')
+
+const loadCustomerCart = async (force = false) => {
+  if (auth.user?.role !== 'customer') return
+  try {
+    await loadCart(force)
+  } catch {
+    resetCart()
+  }
+}
 
 const signOut = async () => {
   loggingOut.value = true
@@ -14,6 +25,7 @@ const signOut = async () => {
 
   try {
     await logout()
+    resetCart()
     await router.push({ name: 'home' })
   } catch {
     logoutError.value = 'Gagal keluar. Silakan coba lagi.'
@@ -22,7 +34,18 @@ const signOut = async () => {
   }
 }
 
-onMounted(loadUser)
+watch(
+  () => auth.user?.id,
+  async () => {
+    if (auth.user?.role === 'customer') await loadCustomerCart(true)
+    else resetCart()
+  },
+)
+
+onMounted(async () => {
+  await loadUser()
+  await loadCustomerCart()
+})
 </script>
 
 <template>
@@ -81,6 +104,15 @@ onMounted(loadUser)
           <ul class="dropdown-menu dropdown-menu-end">
             <li v-if="auth.user.role === 'customer'">
               <RouterLink class="dropdown-item" :to="{ name: 'profile' }">Profil</RouterLink>
+            </li>
+            <li v-if="auth.user.role === 'customer'">
+              <RouterLink class="dropdown-item d-flex justify-content-between gap-3" :to="{ name: 'cart' }">
+                <span>Keranjang</span>
+                <span class="badge text-bg-dark">{{ cart.data?.item_count ?? 0 }}</span>
+              </RouterLink>
+            </li>
+            <li v-if="auth.user.role === 'customer'">
+              <RouterLink class="dropdown-item" :to="{ name: 'orders' }">Riwayat Order</RouterLink>
             </li>
             <li>
               <button class="dropdown-item" type="button" :disabled="loggingOut" @click="signOut">

@@ -9,10 +9,17 @@ import TestimonialView from '../views/public/TestimonialView.vue'
 import AboutUsView from '../views/public/AboutUsView.vue'
 import ProfileView from '../views/public/ProfileView.vue'
 import CustomerLoginView from '../views/public/CustomerLoginView.vue'
+import CartView from '../views/public/CartView.vue'
+import CheckoutView from '../views/public/CheckoutView.vue'
+import OrdersView from '../views/public/OrdersView.vue'
+import OrderDetailView from '../views/public/OrderDetailView.vue'
 import AdminLoginView from '../views/admin/AdminLoginView.vue'
 import DashboardView from '../views/admin/DashboardView.vue'
 import ResourceIndexView from '../views/admin/ResourceIndexView.vue'
 import ResourceFormView from '../views/admin/ResourceFormView.vue'
+import OrdersIndexView from '../views/admin/OrdersIndexView.vue'
+import AdminOrderDetailView from '../views/admin/OrderDetailView.vue'
+import BankAccountsView from '../views/admin/BankAccountsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const resourceRoutes = [
@@ -76,6 +83,15 @@ const router = createRouter({
           component: ProfileView,
           meta: { requiresCustomer: true, title: 'Profil Member' },
         },
+        { path: 'cart', name: 'cart', component: CartView, meta: { requiresCustomer: true, title: 'Keranjang' } },
+        { path: 'checkout', name: 'checkout', component: CheckoutView, meta: { requiresCustomer: true, title: 'Checkout' } },
+        { path: 'orders', name: 'orders', component: OrdersView, meta: { requiresCustomer: true, title: 'Riwayat Order' } },
+        {
+          path: 'orders/:id',
+          name: 'order-detail',
+          component: OrderDetailView,
+          meta: { requiresCustomer: true, title: 'Detail Order' },
+        },
       ],
     },
     {
@@ -90,6 +106,9 @@ const router = createRouter({
       meta: { requiresAuth: true, requiresAdmin: true },
       children: [
         { path: '', name: 'admin.dashboard', component: DashboardView, meta: { title: 'Dashboard' } },
+        { path: 'orders', name: 'admin.orders.index', component: OrdersIndexView, meta: { title: 'Data Order' } },
+        { path: 'orders/:id', name: 'admin.orders.show', component: AdminOrderDetailView, meta: { title: 'Detail Order' } },
+        { path: 'bank-accounts', name: 'admin.bank-accounts', component: BankAccountsView, meta: { title: 'Rekening Bank' } },
         ...resourceRoutes,
       ],
     },

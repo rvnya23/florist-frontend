@@ -42,6 +42,21 @@ onMounted(loadDashboard)
       </div>
     </div>
 
+    <div class="row g-4 mb-4">
+      <div class="col-sm-6 col-xl-3">
+        <div class="admin-card stat-card"><div class="stat-icon charcoal"><i class="bi bi-bag" aria-hidden="true"></i></div><div class="stat-info"><div class="stat-value">{{ stats.orders }}</div><div class="stat-label">Total Order</div></div></div>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <div class="admin-card stat-card"><div class="stat-icon pink"><i class="bi bi-hourglass-split" aria-hidden="true"></i></div><div class="stat-info"><div class="stat-value">{{ stats.pending_orders }}</div><div class="stat-label">Menunggu Pembayaran</div></div></div>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <div class="admin-card stat-card"><div class="stat-icon pink"><i class="bi bi-receipt" aria-hidden="true"></i></div><div class="stat-info"><div class="stat-value">{{ stats.pending_payments }}</div><div class="stat-label">Menunggu Verifikasi</div></div></div>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <div class="admin-card stat-card"><div class="stat-icon success"><i class="bi bi-check-lg" aria-hidden="true"></i></div><div class="stat-info"><div class="stat-value">{{ stats.confirmed_orders }}</div><div class="stat-label">Order Dikonfirmasi</div></div></div>
+      </div>
+    </div>
+
     <div class="row g-4">
       <div class="col-md-6">
         <section class="admin-card">
@@ -50,13 +65,14 @@ onMounted(loadDashboard)
             <RouterLink :to="{ name: 'admin.products.create' }" class="btn btn-admin-primary"><i class="bi bi-plus-lg" aria-hidden="true"></i> Tambah Produk</RouterLink>
             <RouterLink :to="{ name: 'admin.members.index' }" class="btn btn-admin-outline"><i class="bi bi-people" aria-hidden="true"></i> Lihat Member</RouterLink>
             <RouterLink :to="{ name: 'admin.testimonials.index' }" class="btn btn-admin-outline"><i class="bi bi-chat-heart" aria-hidden="true"></i> Lihat Testimoni</RouterLink>
+            <RouterLink :to="{ name: 'admin.orders.index' }" class="btn btn-admin-outline"><i class="bi bi-bag" aria-hidden="true"></i> Lihat Order</RouterLink>
           </div>
         </section>
       </div>
       <div class="col-md-6">
         <section class="admin-card">
           <h2 class="h5 mb-3 admin-card-title">Selamat Datang!</h2>
-          <p class="admin-card-copy">Kelola data produk, member, testimoni, dan halaman Tentang Kami dari panel ini. Gunakan menu di sidebar untuk navigasi.</p>
+          <p class="admin-card-copy">Kelola produk, member, order, pembayaran, rekening bank, testimoni, dan halaman Tentang Kami dari panel ini.</p>
         </section>
       </div>
     </div>

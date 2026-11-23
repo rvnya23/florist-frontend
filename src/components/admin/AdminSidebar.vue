@@ -9,6 +9,9 @@ const links = [
   { name: 'admin.members.index', label: 'Data Member', icon: 'bi-people' },
   { name: 'admin.testimonials.index', label: 'Pesan & Kesan', icon: 'bi-chat-heart' },
   { name: 'admin.about-us.index', label: 'Tentang Kami', icon: 'bi-info-circle' },
+  { label: 'Penjualan', heading: true },
+  { name: 'admin.orders.index', label: 'Data Order', icon: 'bi-bag' },
+  { name: 'admin.bank-accounts', label: 'Rekening Bank', icon: 'bi-bank' },
 ]
 </script>
 

@@ -5,7 +5,15 @@ import { useApiForm } from '../../composables/useApiForm'
 import { useAuth } from '../../composables/useAuth'
 
 const { form, errors, message, submitting, submit } = useApiForm(
-  { name: '', email: '', phone: '', address: '', password: '', password_confirmation: '' },
+  {
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    password: '',
+    password_confirmation: '',
+    auto_login: true,
+  },
   publicApi.registerMember,
 )
 const { loadUser } = useAuth()
