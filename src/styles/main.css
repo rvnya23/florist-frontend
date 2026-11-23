@@ -1,0 +1,128 @@
+:root {
+    --main-color: #feccd8;
+    --main-color-darker: #ad3f5a;
+    --text-color-white: #faf0ee;
+    --text-color-dark: #211f1d;
+    --body-color: #fff9f2;
+}
+
+* {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.font-handwriting {
+    font-family: "Tangerine", serif !important;
+}
+
+.text-color-main {
+    color: var(--main-color);
+}
+
+.text-color-main-darker {
+    color: var(--main-color-darker);
+}
+
+.text-color-white {
+    color: var(--text-color-white);
+}
+
+.text-color-dark {
+    color: var(--text-color-dark);
+}
+
+.bg-color-main {
+    background-color: var(--main-color);
+}
+
+.bg-color-main-darker {
+    background-color: var(--main-color-darker);
+}
+
+.bg-color-dark {
+    background-color: var(--text-color-dark);
+}
+
+.bg-color-white {
+    background-color: var(--text-color-white);
+}
+
+.bg-color-body {
+    background-color: var(--body-color);
+}
+
+.border-color-dark {
+    border: 1px solid var(--text-color-dark);
+}
+
+.border-color-main-darker {
+    border: 2px solid var(--main-color-darker);
+}
+
+.public-hero {
+    background: linear-gradient(to right, var(--text-color-white) 65%, var(--main-color) 35%);
+    color: var(--text-color-dark);
+    height: 80dvh;
+}
+
+.cta {
+    border-radius: 0 50px 0 50px;
+    font-weight: bold;
+}
+
+.cta-image-container {
+    aspect-ratio: 9/16;
+    width: 50%;
+    overflow: hidden;
+    border-radius: 20rem;
+    background-color: var(--text-color-white);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
+.cta-image-container img {
+    width: 200%;
+    height: auto;
+    object-fit: contain;
+}
+
+.overview-image {
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+
+.card-catalog {
+    width: 100%;
+    border: 2px solid var(--main-color-darker);
+}
+
+.card-catalog-image {
+    aspect-ratio: 1/1;
+    width: 100%;
+    box-shadow: 0 0 110px rgb(254, 204, 216, 0.8);
+}
+
+.card-catalog-description .text {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+.card-testimonial {
+    background-color: var(--text-color-white);
+    color: var(--text-color-dark);
+}
+
+.card-testimonial-image {
+    object-fit: contain;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: var(--text-color-dark);
+}
+
+.form-daftar-member, .form-pesan-kesan {
+    box-shadow: 0 0 110px rgb(254, 204, 216, 0.8);
+}
